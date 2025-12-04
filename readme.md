@@ -31,7 +31,39 @@ invoice-reader/
 
 ## Dependencies
 
-- Tesseract OCR
-- OpenCV
-- Pillow
-- Python 3.8+
+- python 3.12++ (3.12.7)
+- opencv-python
+- pillow
+- pytesseract
+- easyocr
+- pandas
+
+## Phase 1 - OCR Layer
+- read any invoice image/pdf
+- extract text + bounding boxes
+- confidence scores for eact text block
+
+## Phase 2 - Invoice Understanding
+- detect line items
+- detect description, quantity, unit price, total
+- confidence scoring per field
+- output JSON like:
+```
+{
+  "vendor": "ABC Supplies",
+  "date": "2025-02-19",
+  "items": [
+    {
+      "description": "Blue pen",
+      "quantity": 24,
+      "unit_price": 1.20,
+      "confidence": 0.92
+    }
+  ]
+}
+```
+
+## [Future] Phase 3 - Inventory Integration
+- push extracted items into your system
+- check for existing SKU
+- log results + uncertainties
