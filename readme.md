@@ -3,6 +3,18 @@
 
 A Python application for extracting and parsing invoice data from PDF and image files using OCR.
 
+## Quick Setup
+```
+# for MacOS
+python3 -m venv .ocr-venv
+source .ocr-venv/bin/activate
+pip install -r requirements.txt
+
+# for Windows
+python3 -m venv .ocr-venv
+.\ocr-venv\Scripts\Activate.ps1
+pip install -r requirements.txt
+```
 ## Project Structure
 
 ```
