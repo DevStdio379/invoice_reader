@@ -45,7 +45,7 @@ def parse_header(lines):
 
                 for tok in reversed(parts):
                     if any(ch.isalnum() for ch in tok):
-                        header['invoice_number'] = tok.stip()
+                        header['invoice_number'] = tok.strip()
                         break
                     if header['invoice_number']:
                         break

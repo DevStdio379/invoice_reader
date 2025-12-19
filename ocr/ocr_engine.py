@@ -37,4 +37,4 @@ def ocr_with_boxes(pil_img: Image.Image):
             "block_num": int(data['block_num'][i]),
         })
 
-        return words
+    return words

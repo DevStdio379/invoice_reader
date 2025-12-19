@@ -1,2 +1,4 @@
 samples/
 .ocr-venv/
+invoice_output.json
+ocr_debug.png
