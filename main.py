@@ -6,6 +6,7 @@ from PIL import Image, ImageDraw, ImageFont
 from ocr.loader import load_document
 from ocr.preprocess import preprocess
 from ocr.ocr_engine import ocr_with_boxes
+from parser.advanced_table_parser import detect_table_columns
 from parser.header_parser import parse_header
 from parser.table_parser import parse_items
 
@@ -31,11 +32,19 @@ def process_file(path, include_raw=True):
     pil = load_document(raw)
     pre = preprocess(pil)
     words = ocr_with_boxes(pre)
+
+    columns = detect_table_columns(words)
+    if not columns:
+        print("Table header not found!")
+    else:
+        print("Detected columns:", columns)
+    
+
     lines = group_words_to_line(words)
 
     header = parse_header(lines)
     items = parse_items(lines, words)
-
+ 
     result = {
         "header": header,
         "items": items
